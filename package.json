@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
+    "prebuild": "npm run build:aot",
     "build": "tsc -p src/",
+    "build:aot": "ngc -p tsconfig-aot.json && rollup -c rollup-config.js",
     "build:watch": "tsc -p src/ -w",
     "build:e2e": "tsc -p e2e/",
     "serve": "lite-server -c=bs-config.json",
@@ -26,11 +28,14 @@
   "dependencies": {
     "@angular/common": "~4.0.0",
     "@angular/compiler": "~4.0.0",
+    "@angular/compiler-cli": "^4.0.2",
     "@angular/core": "~4.0.0",
     "@angular/forms": "~4.0.0",
+    "@angular/animations": "^4.0.2",
     "@angular/http": "~4.0.0",
     "@angular/platform-browser": "~4.0.0",
     "@angular/platform-browser-dynamic": "~4.0.0",
+    "@angular/platform-server": "^4.0.2",
     "@angular/router": "~4.0.0",
 
     "angular-in-memory-web-api": "~0.3.0",
@@ -55,6 +60,10 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~4.0.14",
     "rimraf": "^2.5.4",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
 
     "@types/node": "^6.0.46",
     "@types/jasmine": "2.5.36"
